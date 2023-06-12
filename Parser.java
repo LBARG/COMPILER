@@ -65,10 +65,10 @@ public class Parser
             PROGRAM();
         }
         if(!hayErrores && !preanalisis.equals(eof)){
-            System.out.println("Error en la posición " + preanalisis.linea + ". No se esperaba el token " + preanalisis.tipo);
+            System.out.println("Error en la línea " + preanalisis.linea + ". No se esperaba el token " + preanalisis.tipo);
         }
         else if(!hayErrores && preanalisis.equals(eof)){
-            System.out.println("Consulta válida");
+            System.out.println("Cadena de entrada es válida");
         }
 
     }
@@ -82,7 +82,7 @@ public class Parser
         else
         {
             hayErrores = true;
-            System.out.println("Error en la posición " + preanalisis.linea + ". Se esperaba un identificador.");
+            System.out.println("Error en la linea " + preanalisis.linea + ". Se esperaba un identificador.");
         }
     }
     
@@ -126,7 +126,7 @@ public class Parser
         else
         {
             hayErrores = true;
-            System.out.println("Error en la posición " + preanalisis.linea + ". Se esperaba un identificador.");
+            System.out.println("Error en la linea " + preanalisis.linea + ". Se esperaba un identificador.");
         }
     }
    
@@ -141,7 +141,7 @@ public class Parser
         else
         {
             hayErrores = true;
-            System.out.println("Error en la posición " + preanalisis.linea + ". Se esperaba un identificador.");
+            System.out.println("Error en la linea " + preanalisis.linea + ". Se esperaba un identificador.");
         }
     }
 
@@ -158,7 +158,7 @@ public class Parser
         else
         {
             hayErrores = true;
-            System.out.println("Error en la posición " + preanalisis.linea + ". Se esperaba un identificador.");
+            System.out.println("Error en la linea " + preanalisis.linea + ". Se esperaba un identificador.");
         }
     }
 
@@ -196,7 +196,7 @@ public class Parser
         else
         {
             hayErrores = true;
-            System.out.println("Error en la posición " + preanalisis.linea + ". Se esperaba un identificador.");
+            System.out.println("Error en la linea " + preanalisis.linea + ". Se esperaba un identificador.");
         }
     }
 
@@ -231,7 +231,7 @@ public class Parser
         else
         {
             hayErrores = true;
-            System.out.println("Error en la posición " + preanalisis.linea + ". Se esperaba un identificador.");
+            System.out.println("Error en la linea " + preanalisis.linea + ". Se esperaba un identificador.");
         }
     }
 
@@ -251,7 +251,7 @@ public class Parser
         else
         {
             hayErrores = true;
-            System.out.println("Error en la posición " + preanalisis.linea + ". Se esperaba un identificador.");
+            System.out.println("Error en la linea " + preanalisis.linea + ". Se esperaba un identificador.");
         }
     }
     void FOR_STMT_1()
@@ -272,7 +272,7 @@ public class Parser
         else
         {
             hayErrores = true;
-            System.out.println("Error en la posición " + preanalisis.linea + ". Se esperaba un identificador.");
+            System.out.println("Error en la linea " + preanalisis.linea + ". Se esperaba un identificador.");
         }
     }
     void FOR_STMT_2()
@@ -290,7 +290,7 @@ public class Parser
         else
         {
             hayErrores = true;
-            System.out.println("Error en la posición " + preanalisis.linea + ". Se esperaba un identificador.");
+            System.out.println("Error en la linea " + preanalisis.linea + ". Se esperaba un identificador.");
         }
     }
     void FOR_STMT_3()
@@ -317,7 +317,7 @@ public class Parser
         else
         {
             hayErrores = true;
-            System.out.println("Error en la posición " + preanalisis.linea + ". Se esperaba un identificador.");
+            System.out.println("Error en la linea " + preanalisis.linea + ". Se esperaba un identificador.");
         }
     }
 
@@ -343,7 +343,7 @@ public class Parser
         else
         {
             hayErrores = true;
-            System.out.println("Error en la posición " + preanalisis.linea + ". Se esperaba un identificador.");
+            System.out.println("Error en la linea " + preanalisis.linea + ". Se esperaba un identificador.");
         }
     }
 
@@ -359,7 +359,7 @@ public class Parser
         else
         {
             hayErrores = true;
-            System.out.println("Error en la posición " + preanalisis.linea + ". Se esperaba un identificador.");
+            System.out.println("Error en la linea " + preanalisis.linea + ". Se esperaba un identificador.");
         }
     }
     void RETURN_EXP_OPC()
@@ -385,7 +385,7 @@ public class Parser
         else
         {
             hayErrores = true;
-            System.out.println("Error en la posición " + preanalisis.linea + ". Se esperaba un identificador.");
+            System.out.println("Error en la linea " + preanalisis.linea + ". Se esperaba un identificador.");
         }
         
     }
@@ -402,7 +402,7 @@ public class Parser
         else
         {
             hayErrores = true;
-            System.out.println("Error en la posición " + preanalisis.linea + ". Se esperaba un identificador.");
+            System.out.println("Error en la linea " + preanalisis.linea + ". Se esperaba un identificador.");
         }
     }
 
@@ -425,7 +425,7 @@ public class Parser
         else
         {
             hayErrores = true;
-            System.out.println("Error en la posición " + preanalisis.linea + ". Se esperaba un identificador.");
+            System.out.println("Error en la linea " + preanalisis.linea + ". Se esperaba un identificador.");
         }
     }
 
@@ -440,7 +440,7 @@ public class Parser
         else
         {
             hayErrores = true;
-            System.out.println("Error en la posición " + preanalisis.linea + ". Se esperaba un identificador.");
+            System.out.println("Error en la linea " + preanalisis.linea + ". Se esperaba un identificador.");
         }
     }
     
@@ -465,7 +465,7 @@ public class Parser
         else
         {
             hayErrores = true;
-            System.out.println("Error en la posición " + preanalisis.linea + ". Se esperaba un identificador.");
+            System.out.println("Error en la linea " + preanalisis.linea + ". Se esperaba un identificador.");
         }
     }
 
@@ -491,7 +491,7 @@ public class Parser
         else
         {
             hayErrores = true;
-            System.out.println("Error en la posición " + preanalisis.linea + ". Se esperaba un identificador.");
+            System.out.println("Error en la linea " + preanalisis.linea + ". Se esperaba un identificador.");
         }
     }
 
@@ -517,7 +517,7 @@ public class Parser
         else
         {
             hayErrores = true;
-            System.out.println("Error en la posición " + preanalisis.linea + ". Se esperaba un identificador.");
+            System.out.println("Error en la linea " + preanalisis.linea + ". Se esperaba un identificador.");
         }
     }
 
@@ -549,7 +549,7 @@ public class Parser
         else
         {
             hayErrores = true;
-            System.out.println("Error en la posición " + preanalisis.linea + ". Se esperaba un identificador.");
+            System.out.println("Error en la linea " + preanalisis.linea + ". Se esperaba un identificador.");
         }
     }
     void COMPARISON_2()
@@ -592,7 +592,7 @@ public class Parser
         else
         {
             hayErrores = true;
-            System.out.println("Error en la posición " + preanalisis.linea + ". Se esperaba un identificador.");
+            System.out.println("Error en la linea " + preanalisis.linea + ". Se esperaba un identificador.");
         }
     }
 
@@ -624,7 +624,7 @@ public class Parser
         else
         {
             hayErrores = true;
-            System.out.println("Error en la posición " + preanalisis.linea + ". Se esperaba un identificador.");
+            System.out.println("Error en la linea " + preanalisis.linea + ". Se esperaba un identificador.");
         }
     }
 
@@ -665,7 +665,7 @@ public class Parser
         else
         {
             hayErrores = true;
-            System.out.println("Error en la posición " + preanalisis.linea + ". Se esperaba un identificador.");
+            System.out.println("Error en la linea " + preanalisis.linea + ". Se esperaba un identificador.");
         }
     }
 
@@ -680,7 +680,7 @@ public class Parser
         else
         {
             hayErrores = true;
-            System.out.println("Error en la posición " + preanalisis.linea + ". Se esperaba un identificador.");
+            System.out.println("Error en la linea " + preanalisis.linea + ". Se esperaba un identificador.");
         }
     }
 
@@ -758,7 +758,7 @@ public class Parser
         else
         {
             hayErrores = true;
-            System.out.println("Error en la posición " + preanalisis.linea + ". Se esperaba un identificador.");
+            System.out.println("Error en la linea " + preanalisis.linea + ". Se esperaba un identificador.");
         }
 
     }
@@ -776,7 +776,7 @@ public class Parser
         else
         {
             hayErrores = true;
-            System.out.println("Error en la posición " + preanalisis.linea + ". Se esperaba un identificador.");
+            System.out.println("Error en la linea " + preanalisis.linea + ". Se esperaba un identificador.");
         }
     }
 
@@ -810,7 +810,7 @@ public class Parser
        else
        {
            hayErrores = true;
-           System.out.println("Error en la posición " + preanalisis.linea + ". Se esperaba un identificador.");
+           System.out.println("Error en la linea " + preanalisis.linea + ". Se esperaba un identificador.");
        }
     }
 
@@ -845,7 +845,7 @@ public class Parser
         else
         {
             hayErrores = true;
-            System.out.println("Error en la posición " + preanalisis.linea + ". Se esperaba un identificador.");
+            System.out.println("Error en la linea " + preanalisis.linea + ". Se esperaba un identificador.");
         }
     }
 
@@ -869,7 +869,7 @@ public class Parser
         }
         else{
             hayErrores = true;
-            System.out.println("Error en la posición " + preanalisis.linea + ". Se esperaba un  " + t.tipo);
+            System.out.println("Error en la linea " + preanalisis.linea + ". Se esperaba un  " + t.tipo);
 
         }
     }

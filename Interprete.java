@@ -48,16 +48,16 @@ public class Interprete {
 
         Scanner scanner = new Scanner(source);
         List<Token> tokens = scanner.scanTokens();
-        //System.out.println(source);
-        //for(Token token : tokens){
-          //  System.out.println(token);
+        System.out.println(source);
+        for(Token token : tokens){
+        System.out.println(token);}
         Parser parser = new Parser(tokens);
         parser.parse();
-         GeneradorPostfija gpf = new GeneradorPostfija(tokens);
+        GeneradorPostfija gpf = new GeneradorPostfija(tokens);
         List<Token> postfija = gpf.convertir();
 
-        for(Token token : postfija){
-            System.out.println(token);
+        for(Token tokenp : postfija){
+            System.out.println(tokenp);
         }
 
         GeneradorAST gast = new GeneradorAST(postfija);

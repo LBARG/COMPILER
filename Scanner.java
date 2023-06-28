@@ -255,6 +255,13 @@ public class Scanner {
                         {
                             estado = 10;
                         }
+                        else
+                        {
+                            tokens.add(new Token(TipoToken.DIAGONAL, "/", null,linea));
+                            posicion --;
+                            estado = 0;
+                            
+                        }
                         break;
                     } 
                     case 9:

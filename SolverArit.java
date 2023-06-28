@@ -1,3 +1,5 @@
+import javax.lang.model.util.ElementScanner6;
+
 public class SolverArit {
 
     private final Nodo nodo;
@@ -39,15 +41,81 @@ public class SolverArit {
                     return ((Double)resultadoIzquierdo * (Double) resultadoDerecho);
                 case DIAGONAL:
                     return ((Double)resultadoIzquierdo / (Double) resultadoDerecho);
+                case MAYOR:
+                if((Double)resultadoIzquierdo > (Double) resultadoDerecho)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+                   case MAYOR_IGUAL:
+                if((Double)resultadoIzquierdo >= (Double) resultadoDerecho)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+                case MENOR:
+                if((Double)resultadoIzquierdo < (Double) resultadoDerecho)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+                case MENOR_IGUAL:
+                    if((Double)resultadoIzquierdo <= (Double) resultadoDerecho)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+                case DOBLE_IGUAL:
+                    if((Double)resultadoIzquierdo == (Double) resultadoDerecho)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+                case DIFERNETE:
+                    if((Double)resultadoIzquierdo != (Double) resultadoDerecho)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+                default:
+                Interprete.error("No se esperaba un operador logico o de asignacion");
             }
         }
         else if(resultadoIzquierdo instanceof String && resultadoDerecho instanceof String){
             if (n.getValue().tipo == TipoToken.MAS){
                 // Ejecutar la concatenación
+                return((String)resultadoIzquierdo + (String)resultadoDerecho);
             }
         }
         else{
             // Error por diferencia de tipos
+            boolean esCadena = resultadoIzquierdo instanceof String;
+            if(esCadena)
+            {
+                Interprete.error("Error diferencia de tipos se espera tipo String");
+            }
+            else
+            {
+                Interprete.error("Error diferencia de tipos se espera tipo Double");
+            }
         }
 
         return null;

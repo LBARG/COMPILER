@@ -21,6 +21,11 @@ public class Arbol {
                 break;
                 case VAR:
                 // Crear una variable. Usar tabla de simbolos
+                n.getHijos();
+                SolverArit sol = new SolverArit(n);
+                    Object resultado = sol.resolver();
+                    System.out.println(resultado);
+               
                 break;
                 case SI:
                 break;

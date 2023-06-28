@@ -57,6 +57,12 @@ public class Token {
             case IGUAL:
             case MAYOR:
             case MAYOR_IGUAL:
+            case MENOR:
+            case MENOR_IGUAL:
+            case Y:
+            case O:
+            case DOBLE_IGUAL:
+            case DIFERNETE:
                 return true;
             default:
                 return false;
@@ -69,6 +75,8 @@ public class Token {
             case SI:
             case IMPRIMIR:
             case ADEMAS:
+            case MIENTRAS:
+            case PARA:
                 return true;
             default:
                 return false;
@@ -79,6 +87,8 @@ public class Token {
         switch (this.tipo){
             case SI:
             case ADEMAS:
+            case MIENTRAS:
+            case PARA:
                 return true;
             default:
                 return false;
@@ -93,15 +103,25 @@ public class Token {
         switch (this.tipo){
             case ASTERISCO:
             case DIAGONAL:
-                return 3;
+                return 7;
             case MAS:
             case MENOS:
+                return 6;
+            case MAYOR:
+            case MAYOR_IGUAL:
+            case MENOR:
+            case MENOR_IGUAL:
+                return 5;
+            case DOBLE_IGUAL:
+            case DIFERNETE:
+                return 4;
+            case Y:
+                return 3;
+            case O:
                 return 2;
             case IGUAL:
                 return 1;
-            case MAYOR:
-            case MAYOR_IGUAL:
-                return 1;
+          
         }
 
         return 0;
@@ -116,6 +136,12 @@ public class Token {
             case IGUAL:
             case MAYOR:
             case MAYOR_IGUAL:
+            case MENOR:
+            case MENOR_IGUAL:
+            case DOBLE_IGUAL:
+            case DIFERNETE:
+            case Y:
+            case O:
                 return 2;
         }
         return 0;

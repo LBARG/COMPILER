@@ -57,8 +57,12 @@ public class GeneradorAST {
                 }
                 else{
                     Nodo n = pila.pop();
+                    if(pila.isEmpty())
+                    {
+                        break;
+                    }
 
-                    if(padre.getValue().tipo == TipoToken.VAR){
+                    else if(padre.getValue().tipo == TipoToken.VAR){
                         /*
                         En el caso del VAR, es necesario eliminar el igual que
                         pudiera aparecer en la raíz del nodo n.

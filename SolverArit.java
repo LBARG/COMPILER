@@ -17,6 +17,8 @@ public class SolverArit {
             }
             else if(n.getValue().tipo == TipoToken.IDENTIFICADOR){
                 // Ver la tabla de símbolos
+                Token tkn = n.getValue();
+                TablaSimbolos.obtener(tkn.lexema);
             }
         }
 

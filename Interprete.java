@@ -48,9 +48,9 @@ public class Interprete {
 
         Scanner scanner = new Scanner(source);
         List<Token> tokens = scanner.scanTokens();
-        System.out.println(source);
-        for(Token token : tokens){
-        System.out.println(token);}
+        //System.out.println(source);
+        /*for(Token token : tokens){
+        System.out.println(token);}*/
         Parser parser = new Parser(tokens);
         parser.parse();
         GeneradorPostfija gpf = new GeneradorPostfija(tokens);
@@ -73,10 +73,19 @@ public class Interprete {
     static void error(int linea, String mensaje){
         reportar(linea, "" , mensaje);
     }
+     static void error(String mensaje){
+        reportar( "" , mensaje);
+    }
 
     private static void reportar(int linea, String donde, String mensaje){
         System.err.println(
                 "[linea " + linea + "] Error " + donde + ": " + mensaje
+        );
+        existenErrores = true;
+    }
+    private static void reportar(String donde, String mensaje){
+        System.err.println(
+                "Error " + donde + ": " + mensaje
         );
         existenErrores = true;
     }

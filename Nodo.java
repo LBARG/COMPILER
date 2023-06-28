@@ -19,6 +19,25 @@ public class Nodo {
         }
     }
 
+    public void insertarSiguienteHijo(Nodo n){
+    if(hijos == null){
+            hijos = new ArrayList<>();
+            hijos.add(n);
+        }
+        else{
+            hijos.add(n);
+        }
+    }
+     public void insertarHijos(List<Nodo> nodosHijos){
+        if(hijos == null){
+            hijos = new ArrayList<>();
+        }
+
+        for(Nodo n : nodosHijos){
+            hijos.add(n);
+        }
+    }
+
     public Token getValue(){
         return value;
     }

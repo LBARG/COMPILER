@@ -55,6 +55,30 @@ public class Token {
             case ASTERISCO:
             case DIAGONAL:
             case IGUAL:
+            case MAYOR:
+            case MAYOR_IGUAL:
+                return true;
+            default:
+                return false;
+        }
+    }
+
+     public boolean esPalabraReservada(){
+        switch (this.tipo){
+            case VAR:
+            case SI:
+            case IMPRIMIR:
+            case ADEMAS:
+                return true;
+            default:
+                return false;
+        }
+    }
+
+    public boolean esEstructuraDeControl(){
+        switch (this.tipo){
+            case SI:
+            case ADEMAS:
                 return true;
             default:
                 return false;
@@ -75,6 +99,9 @@ public class Token {
                 return 2;
             case IGUAL:
                 return 1;
+            case MAYOR:
+            case MAYOR_IGUAL:
+                return 1;
         }
 
         return 0;
@@ -87,6 +114,8 @@ public class Token {
             case MAS:
             case MENOS:
             case IGUAL:
+            case MAYOR:
+            case MAYOR_IGUAL:
                 return 2;
         }
         return 0;

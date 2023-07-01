@@ -1,4 +1,4 @@
-import javax.lang.model.util.ElementScanner6;
+
 
 public class SolverArit {
 
@@ -20,7 +20,8 @@ public class SolverArit {
             else if(n.getValue().tipo == TipoToken.IDENTIFICADOR){
                 // Ver la tabla de símbolos
                 Token tkn = n.getValue();
-                TablaSimbolos.obtener(tkn.lexema);
+                return TablaSimbolos.obtener(tkn.lexema);
+
             }
         }
 

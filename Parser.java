@@ -67,9 +67,9 @@ public class Parser
         if(!hayErrores && !preanalisis.equals(eof)){
             System.out.println("Error en la línea " + preanalisis.linea + ". No se esperaba el token " + preanalisis.tipo);
         }
-        else if(!hayErrores && preanalisis.equals(eof)){
+        /*else if(!hayErrores && preanalisis.equals(eof)){
             System.out.println("Cadena de entrada es válida");
-        }
+        }*/
 
     }
 

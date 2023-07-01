@@ -2,6 +2,7 @@ import java.util.List;
 import java.util.Stack;
 
 public class GeneradorAST {
+
     private final List<Token> postfija;
     private final Stack<Nodo> pila;
 
@@ -10,7 +11,7 @@ public class GeneradorAST {
         this.pila = new Stack<>();
     }
 
-    public Arbol generarAST(){
+    public Arbol generarAST() {
         Stack<Nodo> pilaPadres = new Stack<>();
         Nodo raiz = new Nodo(null);
         pilaPadres.push(raiz);
@@ -57,12 +58,8 @@ public class GeneradorAST {
                 }
                 else{
                     Nodo n = pila.pop();
-                    if(pila.isEmpty())
-                    {
-                        break;
-                    }
 
-                    else if(padre.getValue().tipo == TipoToken.VAR){
+                    if(padre.getValue().tipo == TipoToken.VAR){
                         /*
                         En el caso del VAR, es necesario eliminar el igual que
                         pudiera aparecer en la raíz del nodo n.

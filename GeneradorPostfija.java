@@ -3,6 +3,7 @@ import java.util.List;
 import java.util.Stack;
 
 public class GeneradorPostfija {
+
     private final List<Token> infija;
     private final Stack<Token> pila;
     private final List<Token> postfija;
@@ -15,8 +16,8 @@ public class GeneradorPostfija {
 
     public List<Token> convertir(){
         boolean estructuraDeControl = false;
-        Stack <Token> pilaEstructurasDeControl = new Stack<>();
-        
+        Stack<Token> pilaEstructurasDeControl = new Stack<>();
+
         for(int i=0; i<infija.size(); i++){
             Token t = infija.get(i);
 
@@ -49,7 +50,10 @@ public class GeneradorPostfija {
                 if(pila.peek().tipo == TipoToken.PAR_IZQ){
                     pila.pop();
                 }
-                if(estructuraDeControl && infija.get(i+1).tipo == TipoToken.LLAVE_IZQ){
+
+                // Esta sección de aquí es para manejar el ")" que cierra la
+                // condición de la estructura de control
+                if(estructuraDeControl && infija.get(i + 1).tipo == TipoToken.LLAVE_IZQ){
                     postfija.add(new Token(TipoToken.PUNTO_COMA, ";", null));
                 }
             }
@@ -88,7 +92,7 @@ public class GeneradorPostfija {
                     pila.pop();
                     postfija.add(new Token(TipoToken.PUNTO_COMA, ";", null));
 
-                  // Se extrae de la pila de estrucuras de control, el elemento en el tope
+                    // Se extrae de la pila de estrucuras de control, el elemento en el tope
                     Token aux = pilaEstructurasDeControl.pop();
 
                     /*
@@ -117,8 +121,7 @@ public class GeneradorPostfija {
             postfija.add(new Token(TipoToken.PUNTO_COMA, ";", null));
         }
 
-
         return postfija;
     }
- 
+
 }

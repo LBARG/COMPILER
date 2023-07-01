@@ -42,6 +42,7 @@ public class Token {
         switch (this.tipo){
             case IDENTIFICADOR:
             case NUMERO:
+            case CADENA:
                 return true;
             default:
                 return false;

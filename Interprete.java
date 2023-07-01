@@ -56,13 +56,13 @@ public class Interprete {
         GeneradorPostfija gpf = new GeneradorPostfija(tokens);
         List<Token> postfija = gpf.convertir();
 
-        for(Token tokenp : postfija){
+        /*for(Token tokenp : postfija){
             System.out.println(tokenp);
-        }
+        }*/
 
         GeneradorAST gast = new GeneradorAST(postfija);
         Arbol programa = gast.generarAST();
-        programa.recorrer();
+        programa.recorrer(postfija);
         }
 
     /*

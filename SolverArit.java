@@ -97,13 +97,27 @@ public class SolverArit {
                     return false;
                 }
                 default:
-                Interprete.error("No se esperaba un operador logico o de asignacion");
+                Interprete.error("Error no se esperaba"+ n.getValue().lexema);
             }
         }
         else if(resultadoIzquierdo instanceof String && resultadoDerecho instanceof String){
             if (n.getValue().tipo == TipoToken.MAS){
                 // Ejecutar la concatenación
                 return((String)resultadoIzquierdo + (String)resultadoDerecho);
+            }
+        }
+        else if(resultadoIzquierdo instanceof Boolean && resultadoDerecho instanceof Boolean)
+        {
+            if(n.getValue().tipo == TipoToken.Y)
+            {
+                if((Boolean)resultadoIzquierdo && (Boolean)resultadoDerecho)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
             }
         }
         else{

@@ -1,5 +1,3 @@
-import java.util.List;
-
 public class Arbol {
     private final Nodo raiz;
 
@@ -7,11 +5,9 @@ public class Arbol {
         this.raiz = raiz;
     }
 
-    boolean hayVar = false;
     String lex = "";
     Object val = null;
-
-    public void recorrer(List <Token> postfija){
+    public void recorrer(){
         for(Nodo n : raiz.getHijos()){
             Token t = n.getValue();
             switch (t.tipo){
@@ -23,53 +19,113 @@ public class Arbol {
                     SolverArit solver = new SolverArit(n);
                     Object res = solver.resolver();
                     System.out.println(res);
+
+                break;
+                case IGUAL:
+                Nodo identificador = n.getHijos().get(0);
+                if(TablaSimbolos.existeIdentificador(identificador.getValue().lexema))
+                {
+                Nodo exprI = n.getHijos().get(1); 
+                SolverArit asignar = new SolverArit(exprI);
+                val = asignar.resolver();
+                TablaSimbolos.asignar(identificador.getValue().lexema, val);
+                }
+                else
+                {
+                    Interprete.error("La variable"+ identificador.getValue().lexema + "no definida");
+                }
                 break;
                 case VAR:
                 // Crear una variable. Usar tabla de simbolos
-                if(!(n.getHijos() == null))
+                Nodo id = n.getHijos().get(0);
+                if(id.getValue().tipo == TipoToken.IDENTIFICADOR)
                 {
-                    
-                for(Nodo node : n.getHijos())
-                {
-                    Token tkn = node.getValue();
-                    //System.out.println(tkn.lexema);
-                    switch(tkn.tipo)
+                    if(!(TablaSimbolos.existeIdentificador(id.getValue().lexema)))
                     {
-                        case IDENTIFICADOR:
-                        if(!(TablaSimbolos.existeIdentificador(tkn.lexema)))
-                        {
-                        lex = tkn.lexema;
-                        }
-                        else 
-                        {
-                            Interprete.error("Variable previamente definida");
-                        }
-                        break;
-                        case CADENA:
-                        val = tkn.literal;
-                        break;
-                        case NUMERO:
-                        val = tkn.literal;
-                        break;
+                        lex = id.getValue().lexema;
                     }
-                    TablaSimbolos.asignar(lex, val);
+                    else
+                    {
+                        Interprete.error("Variable previamente definida");
+                    }
                 }
-                }
+              Nodo exprV = n.getHijos().get(1);
+              SolverArit solV = new SolverArit(exprV);
+              Object valor = solV.resolver();
+              TablaSimbolos.asignar(lex, valor);
+                
                 break;
                 case SI:
-                SolverArit sol = new SolverArit(n);
+                    Nodo condicion = n.getHijos().get(0);
+                    SolverArit sol = new SolverArit(condicion);
                     Object r = sol.resolver();
-                    System.out.println(r);
+
+                    Nodo raizIf = new Nodo(null);
+
+                    if((r instanceof Boolean) && (Boolean)r == true){
+                        for(int i = 1; i<n.getHijos().size(); i++){
+
+                            if(n.getHijos().get(i).getValue().tipo == TipoToken.ADEMAS){
+                                break;
+                            }
+                            raizIf.insertarSiguienteHijo(n.getHijos().get(i));
+
+                        }
+
+                        Arbol nueArbol = new Arbol(raizIf);
+                        nueArbol.recorrer();
+
+
+                    }
+                    else if((r instanceof Boolean) && (Boolean)r == false){
+                        Nodo nodoElse = n.getHijos().get( n.getHijos().size() - 1 );
+                        if(nodoElse.getValue().tipo == TipoToken.ADEMAS){
+                            Arbol nueArbol = new Arbol(nodoElse);
+                            nueArbol.recorrer();
+                        }
+                    }
+                    else
+                    {
+                        Interprete.error("La condicion no es de tipo booleana");
+                    }
                 break;
+                case MIENTRAS:
+                    Nodo condicionMientras = n.getHijos().get(0);
+                    SolverArit solucion = new SolverArit(condicionMientras);
+                    Object resol = solucion.resolver();
+
+                    Nodo raizWhile = new Nodo(null);
+                    if((resol instanceof Boolean) && (Boolean)resol == true){
+                        for(int i = 1; i<n.getHijos().size(); i++){
+
+                            
+                            raizWhile.insertarSiguienteHijo(n.getHijos().get(i));
+
+                        }
+                        while((Boolean)resol == true)
+                        {
+                        Arbol nueArbol = new Arbol(raizWhile);
+                        nueArbol.recorrer();
+                        solucion = new SolverArit(condicionMientras);
+                        resol = solucion.resolver();
+                        }
+
+
+                    }
+                    break;
+
                 case IMPRIMIR:
-                if(!(n.getHijos() == null))
-                {
-                   for (Nodo nod : n.getHijos())
-                   {
-                    Arbol programa = new Arbol(nod);
-                    programa.recorrer(postfija);
-                   }
-                }
+                    Nodo expr = n.getHijos().get(0);
+                    SolverArit s = new SolverArit(expr);
+                    Object resI = s.resolver();
+                    if(resI != null)
+                    {
+                    System.out.println(resI);
+                    }
+                    else
+                    {
+                        Interprete.error("Error Null pointer");
+                    }
             }
         }
     }

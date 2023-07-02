@@ -62,7 +62,7 @@ public class Interprete {
 
         GeneradorAST gast = new GeneradorAST(postfija);
         Arbol programa = gast.generarAST();
-        programa.recorrer(postfija);
+        programa.recorrer();
         }
 
     /*

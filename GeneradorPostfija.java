@@ -47,7 +47,7 @@ public class GeneradorPostfija {
                     Token temp = pila.pop();
                     postfija.add(temp);
                 }
-                if(pila.peek().tipo == TipoToken.PAR_IZQ){
+                if(!pila.isEmpty() && pila.peek().tipo == TipoToken.PAR_IZQ){
                     pila.pop();
                 }
 

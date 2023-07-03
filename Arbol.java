@@ -46,13 +46,13 @@ public class Arbol {
                     }
                     else
                     {
-                        Interprete.error("Variable previamente definida");
+                        Interprete.error("Variable: " + id.getValue().lexema + " previamente definida");
                     }
                 }
-              Nodo exprV = n.getHijos().get(1);
-              SolverArit solV = new SolverArit(exprV);
-              Object valor = solV.resolver();
-              TablaSimbolos.asignar(lex, valor);
+                Nodo exprV = n.getHijos().get(1);
+                SolverArit solV = new SolverArit(exprV);
+                Object valor = solV.resolver();
+                TablaSimbolos.asignar(lex, valor);
                 
                 break;
                 case SI:
@@ -86,7 +86,7 @@ public class Arbol {
                     }
                     else
                     {
-                        Interprete.error("La condicion no es de tipo booleana");
+                        Interprete.error("La condicion no cumple con el tipo booleano");
                     }
                 break;
                 case MIENTRAS:
@@ -112,20 +112,55 @@ public class Arbol {
 
 
                     }
-                    break;
+                    else
+                    {
+                        Interprete.error("La condicion no cumple con el tipo booleano");
+                    }
+                break;
 
                 case IMPRIMIR:
                     Nodo expr = n.getHijos().get(0);
                     SolverArit s = new SolverArit(expr);
                     Object resI = s.resolver();
-                    if(resI != null)
-                    {
                     System.out.println(resI);
-                    }
-                    else
+                break;
+                case PARA:
+                    Nodo initPara = n.getHijos().get(0);
+                    Nodo raizInit = new Nodo(null);
+                    raizInit.insertarSiguienteHijo(initPara);
+                    Arbol arbol = new Arbol(raizInit);
+                    arbol.recorrer();
+                    Nodo condicionPara = n.getHijos().get(1);
+                    SolverArit solucionar = new SolverArit(condicionPara);
+                    Object cond = solucionar.resolver();
+
+                    Nodo raizFor = new Nodo(null);
+                    if((cond instanceof Boolean)&&(Boolean)cond == true)
                     {
-                        Interprete.error("Error Null pointer");
+                        for(int i = 3; i<n.getHijos().size(); i++)
+                        {                            
+                            raizFor.insertarSiguienteHijo(n.getHijos().get(i));
+
+                        }
+
+                        while((Boolean)cond == true)
+                        {
+                            Arbol newArbol = new Arbol(raizFor);
+                            newArbol.recorrer();
+                            Nodo incrementoPara = n.getHijos().get(2);
+                            Nodo raizIncremento = new Nodo(null);
+                            raizIncremento.insertarSiguienteHijo(incrementoPara);
+                            Arbol nueArbol = new Arbol(raizIncremento);
+                            nueArbol.recorrer();
+                            solucionar = new SolverArit(condicionPara);
+                            cond = solucionar.resolver();
+                        }
                     }
+                    else 
+                    {
+                        Interprete.error("La condicion no es de tipo booleano");
+                    }
+                break;
             }
         }
     }
